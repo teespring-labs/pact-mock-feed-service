@@ -1,0 +1,39 @@
+{
+  "name": "mock feed service",
+  "version": "1.0.0",
+  "description": "Example feed service",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf pacts",
+    "test": "npm run test:consumer && npm run pact:publish && npm run test:provider",
+    "test:consumer": "nyc --check-coverage --reporter=html --reporter=text-summary mocha consumer/*.spec.ts",
+    "test:provider": "nyc --check-coverage --reporter=html --reporter=text-summary mocha -t 20000 provider/*.spec.ts",
+    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --tag-with-git-branch --broker-base-url=https://test.pact.dius.com.au"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/plugin-proposal-class-properties": "^7.16.0",
+    "@babel/plugin-proposal-decorators": "^7.16.4",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@pact-foundation/absolute-version": "0.0.4",
+    "@pact-foundation/pact": "^9.16.0",
+    "@types/node": "^8.0.24",
+    "axios": "^0.21.2",
+    "jest": "^27.3.1",
+    "lodash": "^4.17.21",
+    "nyc": "^15.0.0-beta.0",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^27.0.4",
+    "ts-mock-imports": "^1.2.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@types/jest": "^27.0.3"
+  }
+}
