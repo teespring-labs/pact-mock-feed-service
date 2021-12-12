@@ -1,5 +1,5 @@
 {
-  "name": "mock feed service",
+  "name": "MockFeedService",
   "version": "1.0.0",
   "description": "Example feed service",
   "main": "index.js",
