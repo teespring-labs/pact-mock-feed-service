@@ -5,7 +5,7 @@ Install the dependencies. Disclaimer: do not move on to the Provider kickoff rep
 Test locally by running `npm test` to run the jest tests locally. This is to create the contract, and verify that your consumer is able to publish a valid contract to PactFlow.
 
 ## Step 2
-Export 2 environment variables - `$PACT_BROKER_URL` and `$PACT_BROKER_TOKEN`. Find those variables on `https://ts-eng.pactflow.io/settings/api-tokens`. You can find the password to the PactFlow account on 1 password. 
+Export 2 environment variables - `$PACT_BROKER_BASE_URL` and `$PACT_BROKER_TOKEN`. Find those variables on `https://ts-eng.pactflow.io/settings/api-tokens`. You can find the password to the PactFlow account on 1 password. 
 
 ## Step 3 
 You should see a new folder called `pacts`, where the new contract is. Publish it by running `npm pact:publish`.
