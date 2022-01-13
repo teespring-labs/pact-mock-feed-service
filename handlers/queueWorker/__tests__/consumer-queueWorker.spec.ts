@@ -9,10 +9,10 @@ const path = require('path');
 
 describe("Message Consumer Test", () => {
   const messagePact = new MessageConsumerPact({
-    consumer: "QueueWorker",
+    consumer: "Mock Feed Service",
     dir: path.resolve(process.cwd(), "pacts"),
     pactfileWriteMode: "update",
-    provider: "Mock Rails Service",
+    provider: "Mock User Service",
     logLevel: "info",
   })
 
@@ -21,14 +21,14 @@ describe("Message Consumer Test", () => {
       return messagePact
         .given("some state")
         .expectsToReceive("a request for a listing")
-        .withContent(JSON.stringify({
+        .withContent({
           body: {
-            Message: JSON.stringify({
+            Message: {
               id: like(1),
               listingId: like("100")
-            })
+            }
           }
-        }))
+        })
         .withMetadata({
           "content-type": "application/json",
         })

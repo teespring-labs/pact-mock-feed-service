@@ -4,11 +4,11 @@
  * @param {object} event - The message json from SNS
  * */
 export default async (event: any): Promise<void> => {
-  const body = JSON.parse((event)).body;
+  const body = event.body;
 
   const { Message } = body;
-  if (!Message || !JSON.parse(Message).listingId) {
+  if (!Message || !Message.listingId) {
     throw new Error ("missing listing Id");
   }
-  return JSON.parse(Message);
+  return Message;
 };
