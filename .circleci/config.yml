@@ -1,0 +1,18 @@
+version: 2.1
+
+jobs:
+    install:
+      docker:
+        - image: 'circleci/node:latest'
+      working_directory: ~/pact-mock-feed-service
+      steps:
+        - checkout
+        - run:
+            name: Install project dependencies
+            command: npm install
+
+workflows:
+    version: 2.1
+    build_and_contract_test:
+      jobs:
+        - install
